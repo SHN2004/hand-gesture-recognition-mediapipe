@@ -92,6 +92,8 @@ This is a module for FPS measurement.
 # Training
 Hand sign recognition and finger gesture recognition can add and change training data and retrain the model.
 
+For a practical step-by-step guide to training your own gestures, see `TRAIN_YOUR_OWN_GESTURES.md`.
+
 ### Hand sign recognition training
 #### 1.Learning data collection
 Press "k" to enter the mode to save key points（displayed as 「MODE:Logging Key Point」）<br>
