@@ -133,3 +133,21 @@ dmypy.json
 .idea/
 
 .DS_Store
+
+# VS Code
+.vscode/
+
+# uv cache
+.uv-cache/
+
+# Local agent/editor context
+.claude/
+
+# Sequence two-hand training artifacts (generated)
+model/two_hand_sequence_classifier/
+
+# Optional local model asset download
+hand_landmarker.task
+
+# Optional local two-hand static model artifacts
+model/two_hand_keypoint_classifier/

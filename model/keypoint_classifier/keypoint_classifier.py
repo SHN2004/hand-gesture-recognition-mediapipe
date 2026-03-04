@@ -16,11 +16,21 @@ class KeyPointClassifier(object):
         self.interpreter.allocate_tensors()
         self.input_details = self.interpreter.get_input_details()
         self.output_details = self.interpreter.get_output_details()
+        try:
+            self.expected_input_size = int(self.input_details[0]["shape"][-1])
+        except Exception:
+            self.expected_input_size = None
 
     def __call__(
         self,
         landmark_list,
     ):
+        if self.expected_input_size is not None and len(landmark_list) != self.expected_input_size:
+            raise ValueError(
+                f"KeyPointClassifier expected {self.expected_input_size} features, got {len(landmark_list)}. "
+                "Did you load the correct model for 1-hand vs 2-hand landmarks?"
+            )
+
         input_details_tensor_index = self.input_details[0]['index']
         self.interpreter.set_tensor(
             input_details_tensor_index,

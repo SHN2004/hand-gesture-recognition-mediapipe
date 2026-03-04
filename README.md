@@ -29,6 +29,7 @@ The following options can be specified when running the demo.
 * --device<br>Specifying the camera device number (Default：0)
 * --width<br>Width at the time of camera capture (Default：960)
 * --height<br>Height at the time of camera capture (Default：540)
+* --num_hands<br>Maximum number of hands to detect (Default：2)
 * --use_static_image_mode<br>Whether to use static_image_mode option for MediaPipe inference (Default：Unspecified)
 * --min_detection_confidence<br>
 Detection confidence threshold (Default：0.5)
@@ -93,14 +94,16 @@ This is a module for FPS measurement.
 Hand sign recognition and finger gesture recognition can add and change training data and retrain the model.
 
 For a practical step-by-step guide to training your own gestures, see `TRAIN_YOUR_OWN_GESTURES.md`.
+You can also train the hand-sign classifier without Jupyter using `python3 train_keypoint_classifier.py` (supports `--num_hands 1` or `--num_hands 2`).
 
 ### Hand sign recognition training
 #### 1.Learning data collection
 Press "k" to enter the mode to save key points（displayed as 「MODE:Logging Key Point」）<br>
 <img src="https://user-images.githubusercontent.com/37477845/102235423-aa6cb680-3f35-11eb-8ebd-5d823e211447.jpg" width="60%"><br><br>
-If you press "0" to "9", the key points will be added to "model/keypoint_classifier/keypoint.csv" as shown below.<br>
+If you press "0" to "9", the app shows a short countdown, then records key points continuously for ~20 seconds to "model/keypoint_classifier/keypoint.csv" as shown below.<br>
 1st column: Pressed number (used as class ID), 2nd and subsequent columns: Key point coordinates<br>
 <img src="https://user-images.githubusercontent.com/37477845/102345725-28d26280-3fe1-11eb-9eeb-8c938e3f625b.png" width="80%"><br><br>
+To collect **two-hand** sign training data, press `b` (MODE:Logging Two-Hand Key Point), then press a number key. This saves a combined two-hand feature vector to `model/two_hand_keypoint_classifier/keypoint.csv`.
 The key point coordinates are the ones that have undergone the following preprocessing up to ④.<br>
 <img src="https://user-images.githubusercontent.com/37477845/102242918-ed328c80-3f3d-11eb-907c-61ba05678d54.png" width="80%">
 <img src="https://user-images.githubusercontent.com/37477845/102244114-418a3c00-3f3f-11eb-8eef-f658e5aa2d0d.png" width="80%"><br><br>
